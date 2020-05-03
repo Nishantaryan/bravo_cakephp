@@ -19,6 +19,11 @@ class CreateUsers extends AbstractMigration
                 'default' => 0,
                 'null' => true
             ])
+            ->addColumn('product_id', 'integer', [
+                'default' => null,
+                'limit' => 255,
+                'null' => false
+            ])
             ->addColumn('created', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'limit' => null,

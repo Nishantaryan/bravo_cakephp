@@ -2,7 +2,6 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * User Entity
@@ -11,8 +10,12 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property string $username
  * @property string $password
  * @property bool|null $active
+ * @property int $product_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ *
+ * @property \App\Model\Entity\Product $product
+ * @property \App\Model\Entity\Type[] $types
  */
 class User extends Entity
 {
@@ -29,8 +32,11 @@ class User extends Entity
         'username' => true,
         'password' => true,
         'active' => true,
+        'product_id' => true,
         'created' => true,
         'modified' => true,
+        'product' => true,
+        'types' => true,
     ];
 
     /**
@@ -41,10 +47,4 @@ class User extends Entity
     protected $_hidden = [
         'password',
     ];
-
-    
-    protected function _setPassword($password)
-    {
-        return (new DefaultPasswordHasher)->hash($password);
-    }
 }

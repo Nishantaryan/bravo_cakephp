@@ -41,8 +41,8 @@ class TypesFixture extends TestFixture
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'short_desc' => 'Lorem ipsum dolor sit amet',
-                'created' => 1588516413,
-                'modified' => '2020-05-03 14:33:33',
+                'created' => 1588516994,
+                'modified' => '2020-05-03 14:43:14',
             ],
         ];
         parent::init();

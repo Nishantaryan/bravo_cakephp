@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Types Model
  *
+ * @property &\Cake\ORM\Association\BelongsToMany $Users
+ *
  * @method \App\Model\Entity\Type get($primaryKey, $options = [])
  * @method \App\Model\Entity\Type newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Type[] newEntities(array $data, array $options = [])
@@ -37,6 +39,12 @@ class TypesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Users', [
+            'foreignKey' => 'type_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'users_types',
+        ]);
     }
 
     /**

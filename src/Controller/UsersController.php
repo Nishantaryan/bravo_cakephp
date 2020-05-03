@@ -19,6 +19,9 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Products'],
+        ];
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -34,7 +37,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => [],
+            'contain' => ['Products', 'Types'],
         ]);
 
         $this->set('user', $user);
@@ -57,7 +60,9 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $products = $this->Users->Products->find('list', ['limit' => 200]);
+        $types = $this->Users->Types->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'products', 'types'));
     }
 
     /**
@@ -70,7 +75,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => [],
+            'contain' => ['Types'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -81,7 +86,9 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $products = $this->Users->Products->find('list', ['limit' => 200]);
+        $types = $this->Users->Types->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'products', 'types'));
     }
 
     /**

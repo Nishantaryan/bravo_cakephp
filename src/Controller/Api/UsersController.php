@@ -34,7 +34,13 @@ class UsersController extends AppController
 }
 
 
-
+public function index()
+{
+    $this->Crud->on('beforePaginate', function (\Cake\Event\Event $event) {
+        $this->paginate['contain'] = ['Types','Products'];
+    });
+    return $this->Crud->execute();
+}
 
 public function token()
 {

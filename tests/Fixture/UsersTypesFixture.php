@@ -41,8 +41,8 @@ class UsersTypesFixture extends TestFixture
                 'id' => 1,
                 'user_id' => 1,
                 'type_id' => 1,
-                'created' => 1588516550,
-                'modified' => '2020-05-03 14:35:50',
+                'created' => 1588517004,
+                'modified' => '2020-05-03 14:43:24',
             ],
         ];
         parent::init();
