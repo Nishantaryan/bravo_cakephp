@@ -20,7 +20,7 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Products'],
+            'contain' => ['Locations', 'Products'],
         ];
         $users = $this->paginate($this->Users);
 
@@ -37,7 +37,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Products', 'Cocktails', 'Types'],
+            'contain' => ['Locations', 'Products', 'Cocktails', 'Types', 'Orders'],
         ]);
 
         $this->set('user', $user);
@@ -60,10 +60,11 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+        $locations = $this->Users->Locations->find('list', ['limit' => 200]);
         $products = $this->Users->Products->find('list', ['limit' => 200]);
         $cocktails = $this->Users->Cocktails->find('list', ['limit' => 200]);
         $types = $this->Users->Types->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'products', 'cocktails', 'types'));
+        $this->set(compact('user', 'locations', 'products', 'cocktails', 'types'));
     }
 
     /**
@@ -87,10 +88,11 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+        $locations = $this->Users->Locations->find('list', ['limit' => 200]);
         $products = $this->Users->Products->find('list', ['limit' => 200]);
         $cocktails = $this->Users->Cocktails->find('list', ['limit' => 200]);
         $types = $this->Users->Types->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'products', 'cocktails', 'types'));
+        $this->set(compact('user', 'locations', 'products', 'cocktails', 'types'));
     }
 
     /**

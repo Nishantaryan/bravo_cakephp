@@ -39,8 +39,8 @@ class LocationsFixture extends TestFixture
             [
                 'id' => 1,
                 'location_types_id' => 1,
-                'created' => 1589048677,
-                'modified' => '2020-05-09 18:24:37',
+                'created' => 1589051150,
+                'modified' => '2020-05-09 19:05:50',
             ],
         ];
         parent::init();

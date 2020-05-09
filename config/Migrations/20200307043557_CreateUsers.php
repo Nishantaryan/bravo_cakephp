@@ -19,6 +19,11 @@ class CreateUsers extends AbstractMigration
                 'default' => 0,
                 'null' => true
             ])
+            ->addColumn('location_id', 'integer', [
+                'default' => null,
+                'limit' => 255,
+                'null' => false
+            ])
             ->addColumn('product_id', 'integer', [
                 'default' => null,
                 'limit' => 255,

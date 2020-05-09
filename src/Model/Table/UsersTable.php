@@ -9,8 +9,9 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \App\Model\Table\LocationsTable&\Cake\ORM\Association\BelongsTo $Locations
  * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsTo $Products
- * @property &\Cake\ORM\Association\HasMany $Orders
+ * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\HasMany $Orders
  * @property \App\Model\Table\CocktailsTable&\Cake\ORM\Association\BelongsToMany $Cocktails
  * @property \App\Model\Table\TypesTable&\Cake\ORM\Association\BelongsToMany $Types
  *
@@ -43,6 +44,10 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Locations', [
+            'foreignKey' => 'location_id',
+            'joinType' => 'INNER',
+        ]);
         $this->belongsTo('Products', [
             'foreignKey' => 'product_id',
             'joinType' => 'INNER',
@@ -103,6 +108,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->existsIn(['location_id'], 'Locations'));
         $rules->add($rules->existsIn(['product_id'], 'Products'));
 
         return $rules;

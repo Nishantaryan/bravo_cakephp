@@ -42,6 +42,7 @@ class OrdersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Tree');
 
         $this->belongsTo('Locations', [
             'foreignKey' => 'location_id',

@@ -37,7 +37,7 @@ class LocationsController extends AppController
     public function view($id = null)
     {
         $location = $this->Locations->get($id, [
-            'contain' => ['LocationTypes', 'Bays', 'Orders'],
+            'contain' => ['LocationTypes', 'Bays', 'Orders', 'Users'],
         ]);
 
         $this->set('location', $location);

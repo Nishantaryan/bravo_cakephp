@@ -24,6 +24,7 @@ class LocationsControllerTest extends TestCase
         'app.LocationTypes',
         'app.Bays',
         'app.Orders',
+        'app.Users',
     ];
 
     /**

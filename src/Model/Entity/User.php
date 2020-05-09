@@ -10,11 +10,14 @@ use Cake\ORM\Entity;
  * @property string $username
  * @property string $password
  * @property bool|null $active
+ * @property int $location_id
  * @property int $product_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
  *
+ * @property \App\Model\Entity\Location $location
  * @property \App\Model\Entity\Product $product
+ * @property \App\Model\Entity\Order[] $orders
  * @property \App\Model\Entity\Cocktail[] $cocktails
  * @property \App\Model\Entity\Type[] $types
  */
@@ -33,10 +36,13 @@ class User extends Entity
         'username' => true,
         'password' => true,
         'active' => true,
+        'location_id' => true,
         'product_id' => true,
         'created' => true,
         'modified' => true,
+        'location' => true,
         'product' => true,
+        'orders' => true,
         'cocktails' => true,
         'types' => true,
     ];

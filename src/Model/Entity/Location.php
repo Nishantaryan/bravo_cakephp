@@ -14,6 +14,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\LocationType $location_type
  * @property \App\Model\Entity\Bay[] $bays
  * @property \App\Model\Entity\Order[] $orders
+ * @property \App\Model\Entity\User[] $users
  */
 class Location extends Entity
 {
@@ -33,5 +34,6 @@ class Location extends Entity
         'location_type' => true,
         'bays' => true,
         'orders' => true,
+        'users' => true,
     ];
 }

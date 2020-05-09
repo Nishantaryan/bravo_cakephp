@@ -11,8 +11,12 @@
         <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Locations'), ['controller' => 'Locations', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Location'), ['controller' => 'Locations', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Products'), ['controller' => 'Products', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Product'), ['controller' => 'Products', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Cocktails'), ['controller' => 'Cocktails', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Cocktail'), ['controller' => 'Cocktails', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Types'), ['controller' => 'Types', 'action' => 'index']) ?> </li>
@@ -29,6 +33,10 @@
         <tr>
             <th scope="row"><?= __('Password') ?></th>
             <td><?= h($user->password) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Location') ?></th>
+            <td><?= $user->has('location') ? $this->Html->link($user->location->id, ['controller' => 'Locations', 'action' => 'view', $user->location->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Product') ?></th>
@@ -103,6 +111,45 @@
                     <?= $this->Html->link(__('View'), ['controller' => 'Types', 'action' => 'view', $types->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Types', 'action' => 'edit', $types->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Types', 'action' => 'delete', $types->id], ['confirm' => __('Are you sure you want to delete # {0}?', $types->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
+    <div class="related">
+        <h4><?= __('Related Orders') ?></h4>
+        <?php if (!empty($user->orders)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('Location Id') ?></th>
+                <th scope="col"><?= __('Product Id') ?></th>
+                <th scope="col"><?= __('User Id') ?></th>
+                <th scope="col"><?= __('Trailer Id') ?></th>
+                <th scope="col"><?= __('Parent Id') ?></th>
+                <th scope="col"><?= __('Lft') ?></th>
+                <th scope="col"><?= __('Rght') ?></th>
+                <th scope="col"><?= __('Created') ?></th>
+                <th scope="col"><?= __('Modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($user->orders as $orders): ?>
+            <tr>
+                <td><?= h($orders->id) ?></td>
+                <td><?= h($orders->location_id) ?></td>
+                <td><?= h($orders->product_id) ?></td>
+                <td><?= h($orders->user_id) ?></td>
+                <td><?= h($orders->trailer_id) ?></td>
+                <td><?= h($orders->parent_id) ?></td>
+                <td><?= h($orders->lft) ?></td>
+                <td><?= h($orders->rght) ?></td>
+                <td><?= h($orders->created) ?></td>
+                <td><?= h($orders->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Orders', 'action' => 'delete', $orders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orders->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

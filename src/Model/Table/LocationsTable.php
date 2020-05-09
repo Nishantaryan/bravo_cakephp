@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\LocationTypesTable&\Cake\ORM\Association\BelongsTo $LocationTypes
  * @property \App\Model\Table\BaysTable&\Cake\ORM\Association\HasMany $Bays
  * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\HasMany $Orders
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\HasMany $Users
  *
  * @method \App\Model\Entity\Location get($primaryKey, $options = [])
  * @method \App\Model\Entity\Location newEntity($data = null, array $options = [])
@@ -50,6 +51,9 @@ class LocationsTable extends Table
             'foreignKey' => 'location_id',
         ]);
         $this->hasMany('Orders', [
+            'foreignKey' => 'location_id',
+        ]);
+        $this->hasMany('Users', [
             'foreignKey' => 'location_id',
         ]);
     }

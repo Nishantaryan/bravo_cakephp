@@ -27,6 +27,22 @@ class CreateOrders extends AbstractMigration
                 'limit' => 255,
                 'null' => false
             ])
+            ->addColumn('parent_id', 'integer', [
+                'default' => null,
+                'limit' => 11,
+                'null' => false,
+                ])
+            ->addColumn('lft', 'integer', [
+                'default' => null,
+                'limit' => 10,
+                'null' => false,
+                ])
+            ->addColumn('rght', 'integer', [
+                'default' => null,
+                'limit' => 10,
+                'null' => false,
+                ])
+
             ->addColumn('created', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'limit' => null,
