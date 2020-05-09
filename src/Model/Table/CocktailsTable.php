@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Cocktails Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsToMany $Users
+ *
  * @method \App\Model\Entity\Cocktail get($primaryKey, $options = [])
  * @method \App\Model\Entity\Cocktail newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Cocktail[] newEntities(array $data, array $options = [])
@@ -37,6 +39,12 @@ class CocktailsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Users', [
+            'foreignKey' => 'cocktail_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'users_cocktails',
+        ]);
     }
 
     /**

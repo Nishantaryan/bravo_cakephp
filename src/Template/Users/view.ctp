@@ -13,6 +13,8 @@
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Products'), ['controller' => 'Products', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Product'), ['controller' => 'Products', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Cocktails'), ['controller' => 'Cocktails', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Cocktail'), ['controller' => 'Cocktails', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Types'), ['controller' => 'Types', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Type'), ['controller' => 'Types', 'action' => 'add']) ?> </li>
     </ul>
@@ -49,6 +51,35 @@
             <td><?= $user->active ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
+    <div class="related">
+        <h4><?= __('Related Cocktails') ?></h4>
+        <?php if (!empty($user->cocktails)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('Name') ?></th>
+                <th scope="col"><?= __('Description') ?></th>
+                <th scope="col"><?= __('Created') ?></th>
+                <th scope="col"><?= __('Modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($user->cocktails as $cocktails): ?>
+            <tr>
+                <td><?= h($cocktails->id) ?></td>
+                <td><?= h($cocktails->name) ?></td>
+                <td><?= h($cocktails->description) ?></td>
+                <td><?= h($cocktails->created) ?></td>
+                <td><?= h($cocktails->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Cocktails', 'action' => 'view', $cocktails->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Cocktails', 'action' => 'edit', $cocktails->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Cocktails', 'action' => 'delete', $cocktails->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cocktails->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
     <div class="related">
         <h4><?= __('Related Types') ?></h4>
         <?php if (!empty($user->types)): ?>

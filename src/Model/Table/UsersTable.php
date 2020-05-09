@@ -10,6 +10,8 @@ use Cake\Validation\Validator;
  * Users Model
  *
  * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsTo $Products
+ * @property &\Cake\ORM\Association\HasMany $Orders
+ * @property \App\Model\Table\CocktailsTable&\Cake\ORM\Association\BelongsToMany $Cocktails
  * @property \App\Model\Table\TypesTable&\Cake\ORM\Association\BelongsToMany $Types
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
@@ -44,6 +46,14 @@ class UsersTable extends Table
         $this->belongsTo('Products', [
             'foreignKey' => 'product_id',
             'joinType' => 'INNER',
+        ]);
+        $this->hasMany('Orders', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->belongsToMany('Cocktails', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'cocktail_id',
+            'joinTable' => 'users_cocktails',
         ]);
         $this->belongsToMany('Types', [
             'foreignKey' => 'user_id',

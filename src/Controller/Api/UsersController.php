@@ -11,7 +11,7 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['add', 'token']);
+        $this->Auth->allow(['add', 'token','index']);
     }
 
     public function add()
@@ -37,7 +37,7 @@ class UsersController extends AppController
 public function index()
 {
     $this->Crud->on('beforePaginate', function (\Cake\Event\Event $event) {
-        $this->paginate['contain'] = ['Types','Products'];
+        $this->paginate['contain'] = ['Types','Products','Cocktails'];
     });
     return $this->Crud->execute();
 }

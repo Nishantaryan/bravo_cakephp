@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $modified
  *
  * @property \App\Model\Entity\Product $product
+ * @property \App\Model\Entity\Cocktail[] $cocktails
  * @property \App\Model\Entity\Type[] $types
  */
 class User extends Entity
@@ -36,6 +37,7 @@ class User extends Entity
         'created' => true,
         'modified' => true,
         'product' => true,
+        'cocktails' => true,
         'types' => true,
     ];
 

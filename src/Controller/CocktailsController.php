@@ -34,7 +34,7 @@ class CocktailsController extends AppController
     public function view($id = null)
     {
         $cocktail = $this->Cocktails->get($id, [
-            'contain' => [],
+            'contain' => ['Users'],
         ]);
 
         $this->set('cocktail', $cocktail);
@@ -57,7 +57,8 @@ class CocktailsController extends AppController
             }
             $this->Flash->error(__('The cocktail could not be saved. Please, try again.'));
         }
-        $this->set(compact('cocktail'));
+        $users = $this->Cocktails->Users->find('list', ['limit' => 200]);
+        $this->set(compact('cocktail', 'users'));
     }
 
     /**
@@ -70,7 +71,7 @@ class CocktailsController extends AppController
     public function edit($id = null)
     {
         $cocktail = $this->Cocktails->get($id, [
-            'contain' => [],
+            'contain' => ['Users'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $cocktail = $this->Cocktails->patchEntity($cocktail, $this->request->getData());
@@ -81,7 +82,8 @@ class CocktailsController extends AppController
             }
             $this->Flash->error(__('The cocktail could not be saved. Please, try again.'));
         }
-        $this->set(compact('cocktail'));
+        $users = $this->Cocktails->Users->find('list', ['limit' => 200]);
+        $this->set(compact('cocktail', 'users'));
     }
 
     /**

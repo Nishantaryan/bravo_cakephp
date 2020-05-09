@@ -10,6 +10,8 @@
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Products'), ['controller' => 'Products', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Product'), ['controller' => 'Products', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Cocktails'), ['controller' => 'Cocktails', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Cocktail'), ['controller' => 'Cocktails', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Types'), ['controller' => 'Types', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Type'), ['controller' => 'Types', 'action' => 'add']) ?></li>
     </ul>
@@ -23,6 +25,7 @@
             echo $this->Form->control('password');
             echo $this->Form->control('active');
             echo $this->Form->control('product_id', ['options' => $products]);
+            echo $this->Form->control('cocktails._ids', ['options' => $cocktails]);
             echo $this->Form->control('types._ids', ['options' => $types]);
         ?>
     </fieldset>

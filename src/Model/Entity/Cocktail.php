@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property string $description
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ *
+ * @property \App\Model\Entity\User[] $users
  */
 class Cocktail extends Entity
 {
@@ -28,5 +30,6 @@ class Cocktail extends Entity
         'description' => true,
         'created' => true,
         'modified' => true,
+        'users' => true,
     ];
 }

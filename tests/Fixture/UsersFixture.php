@@ -45,8 +45,8 @@ class UsersFixture extends TestFixture
                 'password' => 'Lorem ipsum dolor sit amet',
                 'active' => 1,
                 'product_id' => 1,
-                'created' => 1588517879,
-                'modified' => '2020-05-03 14:57:59',
+                'created' => 1589049007,
+                'modified' => '2020-05-09 18:30:07',
             ],
         ];
         parent::init();

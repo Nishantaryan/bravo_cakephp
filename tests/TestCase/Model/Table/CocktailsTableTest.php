@@ -24,6 +24,7 @@ class CocktailsTableTest extends TestCase
      */
     public $fixtures = [
         'app.Cocktails',
+        'app.Users',
     ];
 
     /**
